@@ -1,20 +1,29 @@
 import 'dart:io';
 
 void main(List<String> args) {
-  Question question1 = Question(
-      'Who is the president of Nigeria', ['Tinubu', 'Wike', 'Obi', 'Atiku'], 1);
+  Question question1 = Question('Who is the president of Nigeria',
+      ['Bola Tinubu', 'Goodluck Jonathan', 'Peter Obi', 'Abubakar Atiku'], 1);
   question1.displayQuestion();
 
-  Question question2 = Question('Who is the Current governor of Delta State',
-      ['Okowa', 'Wike', 'Sheriff', 'Atiku'], 3);
+  Question question2 =
+      Question('How many continents are there', ['3', '5', '7', '9'], 3);
   question2.displayQuestion();
 
-  Question question3 = Question('Who is the Current governor of Bayelsa State',
-      ['Okowa', 'Sylvia', 'Sheriff', 'Diri'], 4);
+  Question question3 = Question(
+      'Who is the Current president of Russian',
+      [
+        'Volodymyr Zelenskyy',
+        'Dmitry Medvedev',
+        'Barack Obama',
+        'Vladimir Putin'
+      ],
+      4);
   question3.displayQuestion();
 
-  Question question4 = Question('Who is the President of the united State',
-      ['Bill Gates', 'Joe Biden', 'Donald Trump', 'George Bush'], 2);
+  Question question4 = Question(
+      'Who is the current President of the united State',
+      ['Bill Gates', 'Joe Biden', 'Donald Trump', 'George Bush'],
+      2);
   question4.displayQuestion();
 
   int a = question1.displayScore();
@@ -41,6 +50,7 @@ class Question {
 
     print('Input the correct option - 1,2,3 or 4');
 
+// Validate the input option with a while loop
     while (answer == null || answer < 1 || answer > 4) {
       int? answerIndex = int.parse(stdin.readLineSync()!);
       if (answerIndex != 0 && answerIndex <= 4) {
@@ -54,16 +64,15 @@ class Question {
         print('Invalid input, enter option 1,2,3 or 4.');
       }
     }
-
+// Check if the validated answer is correct
     if (answer == correctAnswerIndex) {
-      score = 4;
-      // print('Score: $score');
+      score = 2; //Score 2 marks per correct answer
     } else {
-      score = 0;
+      score = 0; //0 mark if inputed answer is wrong
     }
-    // print(score);
   }
 
+// Method to display the users score.
   int displayScore() {
     return score;
   }
