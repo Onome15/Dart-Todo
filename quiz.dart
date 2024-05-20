@@ -46,7 +46,7 @@ class Question {
     int? answer;
 
     print(questions);
-    options!.asMap().forEach((index, value) => print("${index + 1} $value"));
+    options!.asMap().forEach((index, value) => print("${index + 1}. $value"));
 
     print('Input the correct option - 1,2,3 or 4');
 
@@ -77,57 +77,3 @@ class Question {
     return score;
   }
 }
-   
-    
-
-    
-
-
-
-
-// int getUserAnswer() {
-//     int? userAnswer;
-//     while (userAnswer == null || userAnswer < 1 || userAnswer > questions[currentQuestionIndex].options.length) {
-//       print('Enter your answer (1-${questions[currentQuestionIndex].options.length}):');
-//       String? input = stdin.readLineSync();
-//       if (input != null) {
-//         try {
-//           userAnswer = int.parse(input);
-//         } catch (e) {
-//           print('Invalid input. Please enter a number.');
-//           userAnswer = null;
-//         }
-//       } else {
-//         print('Invalid input. Please enter a number.');
-//       }
-//     }
-//     return userAnswer - 1; // Convert to zero-based index
-//   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class Quiz {
-//   List<Question>? questions;
-//   int? currentQuestionIndex = 0;
-//   int? score = 0;
-
-//   Quiz(this.questions);
-
-//   startQuiz() {
-//     while (!isQuizComplete()) {
-//       displayQuestion();
-//     }
-//   }
-// }
