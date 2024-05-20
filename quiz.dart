@@ -34,19 +34,28 @@ class Question {
   Question(this.questions, this.options, this.correctAnswerIndex);
 
   void displayQuestion() {
+    int? answer;
+
     print(questions);
     options!.asMap().forEach((index, value) => print("${index + 1} $value"));
 
-    print('Input the correct answer');
-    int? answerIndex = int.parse(stdin.readLineSync()!);
-    if (answerIndex != 1 &&
-        answerIndex != 2 &&
-        answerIndex != 3 &&
-        answerIndex != 4) {
-      print("Invalid operation. Please enter 1, 2, 3, or 4.");
+    print('Input the correct option - 1,2,3 or 4');
+
+    while (answer == null || answer < 1 || answer > 4) {
+      int? answerIndex = int.parse(stdin.readLineSync()!);
+      if (answerIndex != 0 && answerIndex <= 4) {
+        try {
+          answer = answerIndex;
+        } catch (e) {
+          print('Invalid input. Please enter a number.');
+          answer = null;
+        }
+      } else {
+        print('Invalid input, enter option 1,2,3 or 4.');
+      }
     }
 
-    if (answerIndex == correctAnswerIndex) {
+    if (answer == correctAnswerIndex) {
       score = 4;
       // print('Score: $score');
     } else {
@@ -59,10 +68,32 @@ class Question {
     return score;
   }
 }
+   
+    
+
+    
 
 
 
 
+// int getUserAnswer() {
+//     int? userAnswer;
+//     while (userAnswer == null || userAnswer < 1 || userAnswer > questions[currentQuestionIndex].options.length) {
+//       print('Enter your answer (1-${questions[currentQuestionIndex].options.length}):');
+//       String? input = stdin.readLineSync();
+//       if (input != null) {
+//         try {
+//           userAnswer = int.parse(input);
+//         } catch (e) {
+//           print('Invalid input. Please enter a number.');
+//           userAnswer = null;
+//         }
+//       } else {
+//         print('Invalid input. Please enter a number.');
+//       }
+//     }
+//     return userAnswer - 1; // Convert to zero-based index
+//   }
 
 
 
